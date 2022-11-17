@@ -1,54 +1,66 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Windows;
-using System.Threading.Tasks;
-using System.Threading;
 using System.Timers;
-using System.Media;
 
 namespace ProgressTracker
 {
     public class Tracker
     {
-        
-        public Tracker() 
-        { 
-        
-        }
-        static void Main(string[] args)
-        {   
-                Console.WriteLine("Hours or Minutes or Seconds?");
-               string _userInput = Console.ReadLine().ToLower().Trim();
 
-            if (_userInput == "seconds") 
+
+        private static System.Timers.Timer timer;
+
+        public static void Main()
+        {
+            Tracker tracker = new Tracker();
+          
+            Console.Write("Enter work time in minutes : ");
+            int workingTime = Convert.ToInt32(Console.ReadLine());
+
+            Console.Write("Enter rest time in minutes : ");
+            int restingTime = Convert.ToInt32(Console.ReadLine());
+
+            displayWorkTime(workingTime);
+            RestTime(restingTime);
+            Console.ReadLine();
+
+
+            static void displayWorkTime(int workTime)
             {
-                Console.WriteLine("You choosed Seconds, how many seconds?");
-                var noOfSeconds = Console.ReadLine(); 
+                
+                timer = new System.Timers.Timer(workTime * 60000);
+                Console.WriteLine("Work time started {0:HH:mm:ss}", DateTime.Now, workTime);
 
-                for (int i = Convert.ToInt32(noOfSeconds); i > 0; i--) 
-                { 
-                    Thread.Sleep(1000);
-                }
-                 
+                
+                timer.Elapsed += Work;
+                timer.AutoReset = false;
+                timer.Enabled = true;
             }
-            else
+
+            static void RestTime(int restTime)
             {
-                Console.WriteLine("Try again later!");
+                
+                timer = new System.Timers.Timer(restTime * 60000);
+                Console.WriteLine("Rest time started {0:HH:mm:ss}", DateTime.Now, restTime);
+
+                
+                timer.Elapsed += Rest;
+                timer.AutoReset = false;
+                timer.Enabled = true;
             }
 
-            Console.Read();
-        }
-
-        public static void Beep() 
-        { 
-            while(true) 
+            static void Work(Object source, ElapsedEventArgs e)
             {
-
-                Console.WriteLine("Successful!");
+                Console.Write("");
             }
+
+            static void Rest(Object source, ElapsedEventArgs e)
+            {
+                Console.Write("");
+            }
+
         }
     }
-    
+
+
+
 }
