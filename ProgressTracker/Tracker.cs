@@ -1,31 +1,25 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Security.Cryptography;
-using System.Text;
-using System.Threading.Tasks;
-using System.Timers;
 
 namespace ProgressTracker
 {
     public class Tracker
     {
+        private DateTime WorkTimeStart;
+        private string? activity;
+
         
         public void WorkTime()
         {
             try {
 
-            DateTime WorkTimeStart = DateTime.Now;
-
+            WorkTimeStart = DateTime.Now;
             Console.WriteLine("Time Now: ");
             Console.WriteLine(WorkTimeStart);
             Console.WriteLine("Press any key to Continue");
             Console.ReadKey();
 
             Console.WriteLine("What do you want to do? ");
-            string? activity = Console.ReadLine();
+            activity = Console.ReadLine();
 
             Console.WriteLine("\nHow many minutes do you want to {0}: ", activity);
             double Time = Convert.ToDouble(Console.ReadLine());
