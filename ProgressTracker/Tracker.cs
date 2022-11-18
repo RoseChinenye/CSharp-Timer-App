@@ -13,13 +13,7 @@ namespace ProgressTracker
 
     public class Tracker
     {
-        public void StartTracker()
-        {
-
-            next();
-
-        }
-
+        
         public void WorkTime()
         {
             try {
@@ -45,11 +39,6 @@ namespace ProgressTracker
             Console.WriteLine("\nTime for {0} has elasped", activity);
             DateTime WorkTimeEnd = DateTime.Now;
             Console.WriteLine("{0} ended by {1} ", activity, WorkTimeEnd);
-
-            TimeSpan TimeLimit = WorkTimeEnd - WorkTimeStart;
-            TimeSpan TimeLimitInMins = (TimeLimit/60);
-
-            Console.WriteLine("The total time spent is: {0} mins", TimeLimitInMins);
 
         }
         catch (Exception e){
@@ -89,11 +78,6 @@ namespace ProgressTracker
             DateTime RestTimeEnd = DateTime.Now;
             Console.WriteLine("{0} ended by {1} ", activity2, RestTimeEnd);
 
-            TimeSpan TimeLimit2 = RestTimeEnd - TimeRestStart;
-
-            TimeSpan TimeLimitInMins2 = (TimeLimit2/60);
-
-            Console.WriteLine("The total time spent is: {0} mins", TimeLimitInMins2);
             }
             catch (Exception e)
             {
@@ -112,7 +96,7 @@ namespace ProgressTracker
             do
             {
                 Console.WriteLine("This is Progress tracker App!");
-                Console.WriteLine("To get Started, Enter START: ");
+                Console.WriteLine("To get Started, Enter START, to quit, Enter END ");
                 string? programStart = Console.ReadLine().ToUpper();
 
                 if (programStart == "START")
@@ -144,7 +128,14 @@ namespace ProgressTracker
                 Console.WriteLine(e.Message);
             }
         }
-    
+
+        public void StartTracker()
+        {
+
+            next();
+
+        }
+
     }
             
 }
