@@ -10,7 +10,6 @@ using System.Timers;
 
 namespace ProgressTracker
 {
-
     public class Tracker
     {
         
@@ -48,9 +47,9 @@ namespace ProgressTracker
 
         public double Millis(double minutes)
         {
-            double MinsToSeconds = (minutes * 60000);
+            double MinsToMillis = (minutes * 60000);
 
-            return MinsToSeconds;
+            return MinsToMillis;
         }
 
         public void RestTime()
@@ -97,7 +96,7 @@ namespace ProgressTracker
             {
                 Console.WriteLine("This is Progress tracker App!");
                 Console.WriteLine("To get Started, Enter START, to quit, Enter END ");
-                string? programStart = Console.ReadLine().ToUpper();
+                string programStart = Console.ReadLine().ToUpper();
 
                 if (programStart == "START")
                 {
