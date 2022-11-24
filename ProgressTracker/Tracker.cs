@@ -1,11 +1,9 @@
-﻿using System;
-
-namespace ProgressTracker
+﻿namespace ProgressTracker
 {
     public class Tracker
     {
         private DateTime WorkTimeStart;
-        private string? activity;
+        private string? activity1;
 
         
         public void WorkTime()
@@ -19,9 +17,9 @@ namespace ProgressTracker
             Console.ReadKey();
 
             Console.WriteLine("What do you want to do? ");
-            activity = Console.ReadLine();
+            activity1 = Console.ReadLine();
 
-            Console.WriteLine("\nHow many minutes do you want to {0}: ", activity);
+            Console.WriteLine("\nHow many minutes do you want to {0}: ", activity1);
             double Time = Convert.ToDouble(Console.ReadLine());
 
             int ConvertToMillis = (int)Millis(Time);
@@ -29,14 +27,18 @@ namespace ProgressTracker
             Thread.Sleep(ConvertToMillis);
             Console.Beep();
 
-            Console.WriteLine("\nTime for {0} has elasped", activity);
+            Console.WriteLine("\nTime for {0} has elasped", activity1);
             DateTime WorkTimeEnd = DateTime.Now;
-            Console.WriteLine("{0} ended by {1} ", activity, WorkTimeEnd);
+            Console.WriteLine("{0} ended by {1} ", activity1, WorkTimeEnd);
 
         }
         catch (Exception e){
-        Console.WriteLine(e.Message);
-        }
+        Console.WriteLine("Message: {0}",e.Message);
+        Console.WriteLine("Method: {0}", e.TargetSite);
+        Console.WriteLine("Calls: {0}", e.StackTrace);
+        Console.WriteLine("Source: {0}", e.Source);
+        Console.WriteLine("Previous exception: {0}", e.InnerException);
+            }
 }
 
         public double Millis(double minutes)
@@ -74,7 +76,11 @@ namespace ProgressTracker
             }
             catch (Exception e)
             {
-                Console.WriteLine(e.Message);
+                Console.WriteLine("Message: {0}", e.Message);
+                Console.WriteLine("Method: {0}", e.TargetSite);
+                Console.WriteLine("Calls: {0}", e.StackTrace);
+                Console.WriteLine("Source: {0}", e.Source);
+                Console.WriteLine("Previous exception: {0}", e.InnerException);
             }
 
         }
@@ -118,7 +124,11 @@ namespace ProgressTracker
             }
             catch (Exception e)
             {
-                Console.WriteLine(e.Message);
+                Console.WriteLine("Message: {0}", e.Message);
+                Console.WriteLine("Method: {0}", e.TargetSite);
+                Console.WriteLine("Calls: {0}", e.StackTrace);
+                Console.WriteLine("Source: {0}", e.Source);
+                Console.WriteLine("Previous exception: {0}", e.InnerException);
             }
         }
 
