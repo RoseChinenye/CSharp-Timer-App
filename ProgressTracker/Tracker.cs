@@ -26,16 +26,16 @@ namespace ProgressTracker
                     Console.WriteLine("How many minutes do you want to {0}: ", activity1);
                     double Time = Convert.ToDouble(Console.ReadLine());
 
-                    Console.WriteLine($"Time is counting down from {Time} minutes....");
+                    Console.WriteLine($"Time is counting down for {Time} minutes....");
 
                     int ConvertToMillis = (int)Millis(Time);
 
-                    Thread.Sleep(ConvertToMillis);
+                    Task.Delay(ConvertToMillis).Wait();
                     Console.Beep();
 
-                    Console.WriteLine("\nTime for {0} has elasped", activity1);
+                    Console.WriteLine("\nTime for {0}ing has elasped", activity1);
                     DateTime WorkTimeEnd = DateTime.Now;
-                    Console.WriteLine("{0} ended by {1} ", activity1, WorkTimeEnd);
+                    Console.WriteLine("{0}ing ended by {1} ", activity1, WorkTimeEnd.ToLongTimeString());
 
                 }
 
@@ -75,16 +75,16 @@ namespace ProgressTracker
                     Console.WriteLine("How many minutes do you want to {0}: ", activity2);
                     double Time2 = Convert.ToDouble(Console.ReadLine());
 
-                    Console.WriteLine($"Time is counting down from {Time2} minutes.....");
+                    Console.WriteLine($"Time is counting down for {Time2} minutes.....");
 
                     int ConvertToMillis2 = (int)Millis(Time2);
 
-                    Thread.Sleep(ConvertToMillis2);
+                    Task.Delay(ConvertToMillis2).Wait();
                     Console.Beep();
 
-                    Console.WriteLine("\nTime for {0} has elasped", activity2);
+                    Console.WriteLine("\nTime for {0}ing has elasped", activity2);
                     DateTime RestTimeEnd = DateTime.Now;
-                    Console.WriteLine("{0} ended by {1} ", activity2, RestTimeEnd);
+                    Console.WriteLine("{0}ing ended by {1} ", activity2, RestTimeEnd.ToLongTimeString());
                 }
             
 
@@ -105,6 +105,9 @@ namespace ProgressTracker
 
             do
             {
+                Console.WriteLine("Press any key to start");
+                Console.ReadKey();
+                Console.Clear();
                 Console.WriteLine("This is Progress tracker App!\nTo get Started, Enter START, to quit, Enter END");
                 string programStart = Console.ReadLine().ToUpper();
 
